@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./test.css">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+  @font-face {
+    font-family: "Title";
+    src: url('./Afrah-light.otf') format('truetype');
+  }
+  @font-face {
+    font-family: "Text";
+    src: url('./Konnect-Medium.otf') format('truetype');
+  }
+    body {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      /* background-image: url('https://img.freepik.com/photos-gratuite/paysage-du-lac-sunburst-du-mont-assiniboine-reflets-entre-pin-au-lever-du-soleil_49071-2094.jpg?size=626&ext=jpg');
+      background-size: cover; */
+      font-family: Text;
+    }
+    h1, p {
+      width: 800px;
+      text-align: center;
+      color: #030303;
+    }
+    h1 {
+      margin-top: 100px;
+      overflow: hidden;
+      font-size: 10rem;
+      font-family: "Title";
+      font-weight: 200;
+      margin-bottom: 50px;
+    }
+    h1 span {
+      margin: 0 1px;
+    }
+    p {
+      font-size: 3rem;
+      line-height: 50px;
+      margin: 0;
+    }
+    span {
+      margin: 0 3px;
+      overflow: hidden;
+      display: inline-block;
+    }
+  </style>
+</head>
+  <body> 
+    <h1 class="wrapper"></h1>
+    <p class="para"></p>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.2.6/gsap.min.js"></script>
+    <script>
+      // je cree une var avec le mot/phrases que je souhaite cree
+      var title = 'HelloMojito';
+      // je stock sa longeur dans une autre var
+      var length = title.length;
+      // je cree une var qui est ;e wrapper des element que je vais creer
+      var wrapper = document.querySelector('.wrapper');
+      // je cree un tableau vide
+      var letter = [];
+      // je push dans mon tableau vide les lettre de ma var title
+      for (i = 0; i < length ; i++) {
+        letter.push(title.substr(i,1));
+      }
+      // je cree des span qui vont contenir une lettre de ma var title
+      letter.forEach(function(element, i){
+        span = document.createElement('span');
+        // span.classList.add(`span--${element}`);
+        span.innerHTML = element;
+        wrapper.appendChild(span);
+      });
+
+      // je cree une var avec une phrase
+
+    var text = 'HelloMojito est une agence qui developper des site des creatif pour que votre image ce demarque de celle de vos concurent'
+
+    var mot = text.split(" ");
+
+      mot.forEach(function(element, i) {
+
+        var para = document.querySelector('.para');
+        var ws = document.createElement('span');
+        var s = document.createElement('span');
+        element = `${element} `
+        ws.classList.add('wrapper--span');
+        s.innerHTML = element;
+        s.classList.add('text')
+        ws.appendChild(s)
+        para.appendChild(ws)
+      })
+      
+      // j'inisialise ma timeline
+      var tl = gsap.timeline();
+      // je fais mon animation
+      tl.set('h1 span, .text', { y: "200%" })
+      .staggerTo('h1 span', 0.5, { y: "0%" }, 0.02, 'start')
+      .staggerTo('.text', 0.5, { y: "0%" }, 0.02, 'start+=0.1').timeScale(0.5)
+      
+
+    </script>
+  </body>
+</html>
